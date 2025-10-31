@@ -1,3 +1,4 @@
+
 export const player = {
     x: 0,
     y: 0,
@@ -10,7 +11,7 @@ export const player = {
 export function initPlayer(canvas) {
     player.x = canvas.width / 2 - player.width / 2;
     player.y = canvas.height - 60;
-    console.log("Player:",player);
+    console.log("Player:", player);
 }
 
 export function drawPlayer(ctx) {
