@@ -5,6 +5,7 @@ import { handleCollisions } from "./collision.js";
 const canvas = document.getElementById("gameCanvas");
 const ctx = canvas.getContext("2d");
 
+
 initPlayer(canvas);
 
 
@@ -13,12 +14,19 @@ const BULLET_SPEED = -5;
 
 function tryShoot() {
     bullets.push({
-        x: player.x,
+        x: player.x + player.width / 2 - 5,
         y: player.y,
         width: 10,
         height: 10,
         vy: BULLET_SPEED,
     })
+}
+
+function updateScore() {
+    const scoreBoard = document.getElementById("scoreBoard");
+    scoreBoard.innerText = `Score: ${player.score}`;
+    const lifeBoard = document.getElementById("lifeBoard");
+    lifeBoard.innerText = `Life: ${player.life}`;
 }
 
 
@@ -47,6 +55,7 @@ function update() {
     spawnEnemy(canvas);
     updateEnemies(canvas);
     handleCollisions();
+    updateScore();
 }
 
 function draw() {
